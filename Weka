@@ -59,57 +59,57 @@ First 10 words:
 IV.  10 different classifiers: 
 1. KNN : 
 	 Accuracy = 88.7734%
-	 Confusion Matrix =         a       b        <-- classified as 
+	 Confusion Matrix =     a     b        <-- classified as 
 				471  10  |     a = email 
 				98  383  |     b = spam   
 
 2. Naive Bayes : 
-	   Accuracy = 98.2328%
-   Confusion Matrix =        a      b        <-- classified as 
+	 Accuracy = 98.2328%
+         Confusion Matrix =     a     b        <-- classified as 
 				468  13  |     a = email 
-				 4   477  |     b = spam   
+				 4   477 |     b = spam   
 								
 3. SMO : 
-	   Accuracy = 99.4802%
-	   Confusion Matrix =        a     b        <-- classified as 
+	 Accuracy = 99.4802%
+	 Confusion Matrix =     a    b        <-- classified as 
 				480  1   |     a = email 
 				4   477  |     b = spam 
 					
 4. Logistic : 
- Accuracy = 98.3368%
- Confusion Matrix =        a       b        <-- classified as 
+	 Accuracy = 98.3368%
+ 	 Confusion Matrix =     a    b        <-- classified as 
 				472  9   |     a = email 
 				7   474  |     b = spam 								
 5. Bagging : 
 	Accuracy = 99.1684%
-Confusion Matrix =        a     b        <-- classified as 
-			            477  4     |     a = email 
+        Confusion Matrix =      a     b        <-- classified as 
+			        477   4  |     a = email 
 			 	4   477  |     b = spam 							
 6. Random Forest : 
 	Accuracy = 99.2723%
-Confusion Matrix =        a     b        <-- classified as 
-			            477  4     |     a = email 
+        Confusion Matrix =      a     b        <-- classified as 
+			        477   4  |     a = email 
 				3   478  |     b = spam 
 7. AdaBoostM1 : 
 	Accuracy = 93.0353%
-Confusion Matrix =         a         b        <-- classified as 
+        Confusion Matrix =      a    b        <-- classified as 
 				455  26   |     a = email 
 				41   440  |     b = spam 							
 	
 8. Attribute Selected Classifier : 
 	Accuracy = 95.1143%
-Confusion Matrix =          a       b        <-- classified as 
+        Confusion Matrix =      a    b        <-- classified as 
 				457  24   |      a = email 
 				23   458  |      b = spam 
 
 9. Bayes Net : 
 	 Accuracy = 96.9854%
-Confusion Matrix =          a      b        <-- classified as 
-				480  1     |       a = email 
+         Confusion Matrix =     a     b        <-- classified as 
+				480   1   |       a = email 
 				28   453  |       b = spam 							
 10. MultiScheme  : 
 	Accuracy = 49.896%
-Confusion Matrix =           a      b        <-- classified as 
+        Confusion Matrix =      a    b        <-- classified as 
 				432  49  |     a = email 
 				433  48  |     b = spam 							
 												
