@@ -1,0 +1,129 @@
+Dataset: The “Dataset_spam” folder contains two subfolders: “email” and “spam”. Each of these subfolders contains 481 email files and 481 spam files. 
+Task: Develop the analysis report as described below and submit the report: As demonstrated and discussed, the development of NASA’s patent-classifier for
+the fifteen-class classification problem, here similarly for the assignments, we will need to do the following steps and develop the analysis report: 
+
+i)	Given the dataset, use Weka’s TextDirectoryLoader to build up the initial ARFF file, which will contain the email-spam-text as strings and the output class {email,spam}.
+Add the initial class distribution in the report. Also, report the required average conversion time in this step, describing how you obtained the average conversion time. 
+
+ii)	Convert the text-string to the most useful vector using Weka’s unsupervised filtering tool: StringToWordVector. Report the parameters you have chosen and explain 
+their roles and justify your selections. Also, report how many words you have collected in this step. 
+
+iii)	Using Weka’s supervised filter, apply ‘infoGainAttributeEval’ with ‘Ranker’ having threshold value set to 0.0. Now, report the total words remains for classification 
+and report the first 10 words with their information-gain values. 
+
+iv)	Run 10 different classifiers and measure their performances using 10 FCV. Report all their performances (accuracy in %) including the confusion matrices. 
+You must include the Naïve-Bayes approach as one of the 10 classifiers. 
+
+v)	Report the best method with its parameter(s) you have found, including the performance-evaluation matrices. Explain why do you think your selected top method is the 
+best method out of the 10 methods you tried. 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Analysis Report 
+Author: Hala Raslan 
+
+I. Initial Class Distribution : 
+Email : 481 
+Spam : 481
+To calculate the average conversion time, I used this command line in Jupyter: 
+%%timeit -n 10
+!java -cp .;weka.jar weka.core.converters.TextDirectoryLoader -dir
+C:\Users\halar\Desktop\Measure_Time_for_Task1\Codes\Dataset_spam > 
+C:\Users\halar\Desktop\Measure_Time_for_Task1/ProcessedData.arff
+
+As a result, I obtained this result : 
+900 ms ± 33.3 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+
+II. String To Word Vector Parameters: 
+IDFTransform = True(IDF * TF is better at a higher value and we want to set them both to true since this is the way we rank the words)
+TFTransform = True 
+Normalize Doc Length = Normalize all data (To adjust the term frequency or relevance score)
+OutputWordCounts = True (Count is important in our case to see whether a word is present or absent)
+The rest of the parameters was left at their default conditions. 
+Total Number of Words: 1551
+
+III. Total Number of Words: 1032
+First 10 words: 
+	Ranked attributes:
+	0.35749       1 language
+	0.28781       2 linguistic
+	0.28528       3 university
+	0.27037       4 free
+	0.20385       5 remove
+	0.1867         6 our
+	0.17817       7 edu
+	0.17699       8 money
+	0.17567       9 $
+	0.14764      10 english
+
+IV.  10 different classifiers: 
+1. KNN : 
+	 Accuracy = 88.7734%
+	 Confusion Matrix =         a       b        <-- classified as 
+				471  10  |     a = email 
+				98  383  |     b = spam   
+
+2. Naive Bayes : 
+	   Accuracy = 98.2328%
+   Confusion Matrix =        a      b        <-- classified as 
+				468  13  |     a = email 
+				 4   477  |     b = spam   
+								
+3. SMO : 
+	   Accuracy = 99.4802%
+	   Confusion Matrix =        a     b        <-- classified as 
+				480  1   |     a = email 
+				4   477  |     b = spam 
+					
+4. Logistic : 
+ Accuracy = 98.3368%
+ Confusion Matrix =        a       b        <-- classified as 
+				472  9   |     a = email 
+				7   474  |     b = spam 								
+5. Bagging : 
+	Accuracy = 99.1684%
+Confusion Matrix =        a     b        <-- classified as 
+			            477  4     |     a = email 
+			 	4   477  |     b = spam 							
+6. Random Forest : 
+	Accuracy = 99.2723%
+Confusion Matrix =        a     b        <-- classified as 
+			            477  4     |     a = email 
+				3   478  |     b = spam 
+7. AdaBoostM1 : 
+	Accuracy = 93.0353%
+Confusion Matrix =         a         b        <-- classified as 
+				455  26   |     a = email 
+				41   440  |     b = spam 							
+	
+8. Attribute Selected Classifier : 
+	Accuracy = 95.1143%
+Confusion Matrix =          a       b        <-- classified as 
+				457  24   |      a = email 
+				23   458  |      b = spam 
+
+9. Bayes Net : 
+	 Accuracy = 96.9854%
+Confusion Matrix =          a      b        <-- classified as 
+				480  1     |       a = email 
+				28   453  |       b = spam 							
+10. MultiScheme  : 
+	Accuracy = 49.896%
+Confusion Matrix =           a      b        <-- classified as 
+				432  49  |     a = email 
+				433  48  |     b = spam 							
+												
+V. The best classifier I have found was SMO. The time it took to build was only 0.42 seconds and the accuracy was 99.4802%.							
+								
+	               TP Rate  FP Rate  Precision  Recall   F-Measure   MCC     ROC Area  PRC Area  Class
+               	  0.998    0.008      0.992        0.998    0.995            0.990    0.995         0.991        email
+                	  0.992    0.002      0.998        0.992    0.995            0.990    0.995         0.994        spam
+Weighted Avg.    0.995    0.005       0.995       0.995    0.995             0.990    0.995         0.992  
+
+The parameter that I changed was the kernel type. I used RBF kernel since it relatively works better in practice and it is easier to 
+calibrate. Compared to the other classifiers, SMO had the highest accuracy. I also took in consideration the normalization factor.
+SMO utilizes this and in this case it is good to have a classifier that normalizes data. 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+							
+						
