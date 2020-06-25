@@ -116,9 +116,9 @@ IV.  10 different classifiers:
 V. The best classifier I have found was SMO. The time it took to build was only 0.42 seconds and the accuracy was 99.4802%.							
 								
 	               TP Rate  FP Rate  Precision  Recall   F-Measure   MCC     ROC Area  PRC Area  Class
-               	  0.998    0.008      0.992        0.998    0.995            0.990    0.995         0.991        email
-                	  0.992    0.002      0.998        0.992    0.995            0.990    0.995         0.994        spam
-Weighted Avg.    0.995    0.005       0.995       0.995    0.995             0.990    0.995         0.992  
+               	        0.998    0.008      0.992   0.998    0.995      0.990    0.995     0.991     email
+                	0.992    0.002      0.998   0.992    0.995      0.990    0.995     0.994     spam
+Weighted Avg.           0.995    0.005      0.995   0.995    0.995      0.990    0.995     0.992  
 
 The parameter that I changed was the kernel type. I used RBF kernel since it relatively works better in practice and it is easier to 
 calibrate. Compared to the other classifiers, SMO had the highest accuracy. I also took in consideration the normalization factor.
